@@ -1,0 +1,55 @@
+<project name="JarMan" default="dist" basedir=".">
+
+<!-- This is the Ant build script.
+     Written using Ant 1.6.1 (http://ant.apache.org/).
+-->
+
+  <property name="app.name"       value="jarman"/>
+  <property name="src.dir"        value="src"/>
+  <property name="deploy.home"    value="./classes"/>
+  <property name="edeploy.home"    value="./bin"/>
+  <property name="dist.jar"       value="${app.name}.jar"/>
+  <property name="img.dir"        value="buttons"/>
+  
+  <!-- Create the output directories for the classes -->
+  <target name="prepare" description="Create classes directory">
+    <mkdir dir="${deploy.home}"/>
+  </target>
+
+  <!-- Delete the output directories for the classes -->
+  <target name="clean" description="Delete classes directory">
+    <delete dir="${deploy.home}"/>
+  </target>
+
+  <!-- Compile the source code (in 'src') and store in 'classes' -->
+  <target name="compile" depends="prepare" description="Compile the source code">
+    <javac srcdir="${src.dir}" destdir="${deploy.home}" target="1.6"
+           debug="on" optimize="on" deprecation="off" >
+      <classpath>
+         <pathelement path="${deploy.home}"/>
+      </classpath>
+      <compilerarg line="-Xlint"/>
+    </javac>
+  </target>
+
+  <!-- Generate the jar file -->
+  <target name="dist" depends="compile" description="Generate the jar file">
+    <jar destfile="./${dist.jar}">
+      <fileset dir="${deploy.home}"/>
+      <manifest>
+        <attribute name="Built-By" value="Mike Wallace"/>
+        <attribute name="Main-Class" value="io.miti.jarman.gui.Jarman"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- Delete the generated class files and compile all of the code -->
+  <target name="all" depends="clean,prepare"
+          description="Run the clean, prepare and compile targets"/>
+  
+  <!-- Zip up the source code -->
+  <target name="zipsource" description="Create a zip file of the source code">
+    <zip basedir="." destfile="./${app.name}-src.zip"
+     includes="build.xml, ${src.dir}/**" />
+  </target>
+</project>
