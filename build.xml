@@ -24,7 +24,8 @@
   <!-- Compile the source code (in 'src') and store in 'classes' -->
   <target name="compile" depends="prepare" description="Compile the source code">
     <javac srcdir="${src.dir}" destdir="${deploy.home}" target="1.6"
-           debug="on" optimize="on" deprecation="off" >
+           debug="on" optimize="on" deprecation="off" source="1.6"
+           includeantruntime="false">
       <classpath>
          <pathelement path="${deploy.home}"/>
       </classpath>
