@@ -87,6 +87,8 @@ public final class SystemPathList
           }
         }
       }
+      
+      jar.close();
     }
     catch (IOException e)
     {

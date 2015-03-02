@@ -34,7 +34,8 @@ public final class ListingsTableListener implements ItemListener
   @Override
   public void itemStateChanged(final ItemEvent event)
   {
-    JComboBox<String> cb = (JComboBox<String>) event.getSource();
+    @SuppressWarnings("unchecked")
+	JComboBox<String> cb = (JComboBox<String>) event.getSource();
     
     // Get the affected item
     if (event.getStateChange() == ItemEvent.SELECTED)

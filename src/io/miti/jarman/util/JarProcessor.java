@@ -156,6 +156,8 @@ public final class JarProcessor
       // Save the jar file and include the number of files it contains
       JarData.getInstance().addJarFileEntry(file.getAbsolutePath(), true, count,
                                             file.length(), file.lastModified());
+      
+      jar.close();
     }
     catch (IOException e)
     {
@@ -187,6 +189,7 @@ public final class JarProcessor
       Manifest man = jar.getManifest();
       if (man == null)
       {
+    	jar.close();
         return true;
       }
       
@@ -202,6 +205,8 @@ public final class JarProcessor
           JarData.getInstance().addManifestEntry(key, val);
         }
       }
+      
+      jar.close();
     }
     catch (IOException ioe)
     {
