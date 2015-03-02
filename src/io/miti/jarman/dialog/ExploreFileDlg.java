@@ -245,8 +245,8 @@ public final class ExploreFileDlg extends JDialog
     JPanel panel = new JPanel(new BorderLayout(8, 8));
     panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     
-    DefaultListModel model = new DefaultListModel();
-    JList lbNames = new JList(model);
+    DefaultListModel<String> model = new DefaultListModel<String>();
+    JList<String> lbNames = new JList<String>(model);
     Iterator<String> names = ci.getInterfaces();
     if (names != null)
     {
@@ -361,8 +361,8 @@ public final class ExploreFileDlg extends JDialog
     JPanel panel = new JPanel(new BorderLayout(8, 8));
     panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     
-    DefaultListModel model = new DefaultListModel();
-    JList lbNames = new JList(model);
+    DefaultListModel<String> model = new DefaultListModel<String>();
+    JList<String> lbNames = new JList<String>(model);
     Iterator<String> names = ci.getStringRefIterator();
     if (names != null)
     {

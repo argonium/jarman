@@ -80,7 +80,7 @@ public final class ListingsPage extends JPanel
   /**
    * The combo box for the View options.
    */
-  private JComboBox cbView = null;
+  private JComboBox<String> cbView = null;
   
   
   /**
@@ -235,7 +235,7 @@ public final class ListingsPage extends JPanel
     top.add(lblView);
     final String[] opts = new String[]
        {"Show All", "Show Name Duplicates", "Show File Duplicates"};
-    cbView = new JComboBox(opts);
+    cbView = new JComboBox<String>(opts);
     cbView.addItemListener(new ListingsTableListener());
     cbView.setEditable(false);
     lblView.setLabelFor(cbView);

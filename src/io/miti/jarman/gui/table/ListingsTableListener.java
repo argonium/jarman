@@ -34,7 +34,7 @@ public final class ListingsTableListener implements ItemListener
   @Override
   public void itemStateChanged(final ItemEvent event)
   {
-    JComboBox cb = (JComboBox) event.getSource();
+    JComboBox<String> cb = (JComboBox<String>) event.getSource();
     
     // Get the affected item
     if (event.getStateChange() == ItemEvent.SELECTED)

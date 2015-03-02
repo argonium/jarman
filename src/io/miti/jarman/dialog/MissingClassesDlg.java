@@ -61,8 +61,8 @@ public final class MissingClassesDlg extends JDialog
     
     // Create the listbox and populate it with the strings
     final JPanel panel = new JPanel(new BorderLayout(0, 15));
-    final JList lbNames = new JList();
-    final DefaultListModel model = new DefaultListModel();
+    final JList<String> lbNames = new JList<String>();
+    final DefaultListModel<String> model = new DefaultListModel<String>();
     final int count = fillModel(model, names);
     lbNames.setModel(model);
     panel.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
@@ -92,7 +92,7 @@ public final class MissingClassesDlg extends JDialog
    * @param lbNames the listbox
    * @return the panel for the buttons
    */
-  private JPanel getPanelButtons(final JList lbNames)
+  private JPanel getPanelButtons(final JList<String> lbNames)
   {
     // The panel that we fill with buttons
     JPanel panelButton = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
@@ -145,7 +145,7 @@ public final class MissingClassesDlg extends JDialog
    * 
    * @param lbNames the listbox
    */
-  private void copySelected(final JList lbNames)
+  private void copySelected(final JList<String> lbNames)
   {
     // Check the selected list size
     final int[] sel = lbNames.getSelectedIndices();
@@ -160,10 +160,10 @@ public final class MissingClassesDlg extends JDialog
     // Build the string containing all classes in the list
     StringBuilder sb = new StringBuilder(500);
     String lineEnd = Utility.getLineSeparator();
-    final DefaultListModel model = (DefaultListModel) lbNames.getModel();
+    final DefaultListModel<String> model = (DefaultListModel<String>) lbNames.getModel();
     for (int i = 0; i < size; ++i)
     {
-      String name = (String) model.elementAt(sel[i]);
+      String name = model.elementAt(sel[i]);
       sb.append(name).append(lineEnd);
     }
     
@@ -177,10 +177,10 @@ public final class MissingClassesDlg extends JDialog
    * 
    * @param lbNames the listbox
    */
-  private void copyAll(final JList lbNames)
+  private void copyAll(final JList<String> lbNames)
   {
     // Check the list size
-    final DefaultListModel model = (DefaultListModel) lbNames.getModel();
+    final DefaultListModel<String> model = (DefaultListModel<String>) lbNames.getModel();
     final int size = model.size();
     if (size < 1)
     {
@@ -194,7 +194,7 @@ public final class MissingClassesDlg extends JDialog
     String lineEnd = Utility.getLineSeparator();
     for (int i = 0; i < size; ++i)
     {
-      String name = (String) model.elementAt(i);
+      String name = model.elementAt(i);
       sb.append(name).append(lineEnd);
     }
     
@@ -210,7 +210,7 @@ public final class MissingClassesDlg extends JDialog
    * @param names the set of strings
    * @return the number of elements in the listbox
    */
-  private int fillModel(final DefaultListModel model, final Set<String> names)
+  private int fillModel(final DefaultListModel<String> model, final Set<String> names)
   {
     // Check for an empty set
     int count = 0;
