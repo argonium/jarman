@@ -13,4 +13,6 @@ Below are the major features:
 * The Jars page lists the opened jar file and any jar files in its manifest’s Class-Path, and highlights any referenced jar files that were not found; the number of files in and the size of each jar is also listed
 * The Manifest page lists all entries in the opened jar file’s manifest (if it has one)
 
+![JarMan](http://argonium.github.io/jm.png)
+
 The source code is released under the MIT license.
